@@ -1,0 +1,38 @@
+
+<% if @feature_ids.nil? %>
+  $('#usage-content').html("<%= j render 'usage_modal', subscription: @subscription%>");
+  $('#usage-modal').modal('show');
+  var usages = document.querySelectorAll(`[id^="subscription"]`)
+
+  var feature_ids = {}
+
+  for(let i=0; i < usages.length; i++){
+    var f_id = parseInt(usages[i].name.replace( /(^.*\[|\].*$)/g, '' ))
+    feature_ids[f_id] = f_id
+  }
+
+  $.ajax({
+    type: "post",
+    url: '/buyer_user/subscriptions/max_limit',
+    data: {f_ids: feature_ids}
+  })
+  
+<% else %>
+  var feature_limit = {}
+  <% @feature_ids.each do |key, value| %>
+    <% id = value.to_i %>
+    feature_limit['subscription_<%=id%>'] = <%= Feature.find(id).max_unit_limit%>
+  <%end%>
+
+  $('.f_usage').on('input', function(){
+   var usage = this.value
+   if(usage > feature_limit[this.id]){
+     $('.usage-div').removeClass('d-none')
+     $('.usage-notif').text('Note: Feature limit exceeded! You will be overcharged for extra units. Once saved, you cannot reduce the usage.')
+   }
+   else{
+    $('.usage-div').addClass('d-none')
+    $('.usage-notif').text('')
+   }
+  })
+<% end %>

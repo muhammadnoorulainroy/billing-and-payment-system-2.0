@@ -1,0 +1,31 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-left {
+  margin: 0px 3px 0px 3px;
+  padding: 2px 5px 2px 5px;
+}
+
+.flex-right {
+  margin: 0px 3px 0px 3px;
+  padding: 2px 5px 2px 5px;
+}
+
+.text-bold{
+  font-weight: bold;
+}
+
+.text-small{
+  font-size: 10px;
+}
+
+.image-size{
+  height:40px;
+  width:40px;
+}
+
+.white{
+  color: #fff
+}

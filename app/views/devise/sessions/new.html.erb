@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <div class="form-content">
+    <h2>Log in</h2>
+
+  <div>
+    <%= image_tag "dashboard.svg", height: 250, width:200 %>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "example@abc.com" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "********" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+
+    <% if flash[:notice] || flash[:alert]%>
+      <div class="alert alert-danger">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
+
+
+  <% end %>
+
+    <div class="form-footer">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div>
+</div>

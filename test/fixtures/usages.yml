@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscription: one
+  feature: 
+  usage: 1
+
+two:
+  subscription: two
+  feature: 
+  usage: 1

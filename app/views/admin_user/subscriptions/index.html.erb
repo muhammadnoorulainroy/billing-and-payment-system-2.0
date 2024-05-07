@@ -1,0 +1,46 @@
+
+<div class="container">
+  <div class="card w-100 p-3">
+    <div class="card-body">
+      <h4 class="card-title">All Subscriptions</h4>
+      <hr />
+      <% @subscriptions.each do |subscription|%>
+        <div id="textbox">
+          <div id="textbox">
+            <h5 class="alignleft"> <%= subscription.plan.name %></h5>
+             <h5 class="alignright">Subscribed By</h5>
+          </div>
+          <div id="textbox">
+            <h5 class="alignleft">Price: US$ <%= subscription.plan.monthly_fee%>/mo</h5>
+            <h5 class="alignright"><%= subscription.buyer.name%></h5>
+          </div>
+        </div>
+        <br /> <br />
+        <div class="container">
+          <p class="d-flex justify-content-center"> Features </p>
+          <div class="container">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Unit price</th>
+                    <th>Max Unit Limit</th>
+                    <th>Usage</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <%= render partial: 'subscription_features', collection: subscription_features(subscription), locals: {subscription: subscription}%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+      <% end %>
+      </div>
+      <div class="d-flex justify-content-end mt-10"> <%== pagy_bootstrap_combo_nav_js(@pagy) %> </div>
+  </div>
+ </div>

@@ -1,0 +1,53 @@
+
+<div class="container">
+  <div class="card w-75 p-3">
+    <div class="card-body">
+    <% if card == "update"%>
+      <h4 class="card-title">Updating Plan</h4>
+      <hr />
+    <% else %>
+     <h4 class="card-title">Create New Plan</h4>
+     <hr />
+    <% end %>
+
+        <%= form_with(model: [:admin, plan], local: true) do |form| %>
+            <% if plan.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(plan.errors.count, "error") %> Error Occured:</h2>
+
+            <ul>
+            <% plan.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+       <div class="form-elements">
+
+         <div class="form-group">
+           <%= form.label :name %>
+          <%= form.text_field :name, required: true, maxlength: 15, size: 20, class:"form-control" %>
+        </div>
+
+        <div>
+          <h5>Add Features</h5>
+          <hr />
+        </div>
+        <div class="form-group form-check">
+          <%= form.collection_check_boxes(:feature_ids, all_features, :id, :name) do |b| %>
+            <%= b.label(class:"mx-2 form-check-label") {b.check_box + b.text } %>
+          <% end %>
+        </div>
+
+       </div>
+
+        <div class="actions">
+          <%= form.submit class: 'btn btn-success'%>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+ </div>

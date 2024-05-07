@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="form-content">
+    <h2>Forgot your password?</h2>
+    <div>
+    <%= image_tag "forgot_password.svg", height: 250, width:200 %>
+  </div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Send me reset password instructions" %>
+      </div>
+    <% end %>
+
+    <%if resource.errors.any?%>
+    <div class="alert alert-danger">
+      <%= render "devise/shared/error_messages", resource: resource%>
+    </div>
+    <%end%>
+
+    <div class="form-footer">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

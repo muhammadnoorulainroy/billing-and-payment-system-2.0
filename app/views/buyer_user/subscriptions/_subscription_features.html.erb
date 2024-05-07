@@ -1,0 +1,6 @@
+<tr>
+  <td><%= subscription_features.name %></td>
+   <td>US$ <%= subscription_features.unit_price %></td>
+   <td><%= subscription_features.max_unit_limit %></td>
+   <td><%= form.number_field subscription_features.id, value: subscription_feature_usage(@subscription, subscription_features), min: subscription_feature_usage(@subscription, subscription_features), required: true, max: 10000, class: 'form-control f_usage'%></td>
+</tr>

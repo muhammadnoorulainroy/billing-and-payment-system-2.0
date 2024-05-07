@@ -1,0 +1,41 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Provide Card Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: [:buyer, subscription], url: buyer_subscriptions_path, local: true, html: {id: 'card-form'} do |f| %>
+
+            <%= f.hidden_field :plan_id, id: "plan_idd"%>
+            <div class="form-group">
+              <%= label_tag :card_number, "Credit Card Number"%>
+              <%= number_field_tag :card_number, nil, required: true, :input_html => {:minlength => 10 , maxlength: 25},  class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :cvc, "Security Code on Card (CVC)" %>
+              <%= number_field_tag :cvc, nil, required: true,  :input_html => {:minlength => 10 , maxlength: 25}, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :card_expiry, "Card Expiration" %>
+              <%= select_month(Date.today, {use_month_numbers: true}, id: 'exp_month', name: 'exp_month') %>
+              <%= select_year(Date.today, {start_year: Date.today.year+1, end_year: Date.today.year+15}, id: 'exp_year', name: 'exp_year') %>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+              <%= f.submit 'Subscribe', class: 'btn btn-success subscribe' %>
+            </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close-modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

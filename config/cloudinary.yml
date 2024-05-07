@@ -1,0 +1,11 @@
+development:
+  cloud_name: "mysticalroy"
+  api_key: "947561341825116"
+  api_secret: "1zeV08yj_ZzIBtlfuE-4_9XcHVI"
+  secure: true
+
+production:
+  cloud_name: "mysticalroy"
+  api_key: "947561341825116"
+  api_secret: "1zeV08yj_ZzIBtlfuE-4_9XcHVI"
+  secure: true

@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="form-content">
+
+    <h2>Buyer Sign Up</h2>
+
+    <%= form_for(resource, as: resource_name, url: user_invitation_path, html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :invitation_token, readonly: true %>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+
+      <% if f.object.class.require_password_on_accepting %>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image %><br />
+          <%= f.file_field :image, required: true, accept:'image/*' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"Invited As" %><br />
+          <%= f.text_field :type, value: "Buyer", readonly: true %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Sign Up as Buyer" %>
+      </div>
+    <% end %>
+
+    <%if resource.errors.any?%>
+      <div class="alert alert-danger">
+      <%= render "devise/shared/error_messages", resource: resource%>
+      </div>
+    <%end%>
+    
+  </div>
+</div>

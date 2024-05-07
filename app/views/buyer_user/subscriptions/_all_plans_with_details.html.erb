@@ -1,0 +1,35 @@
+
+<div class="container">
+  <div class="card w-75 p-3">
+    <div class="card-body">
+      <h4 class="card-title">All Plans</h4>
+      <hr />
+      <% all_plans.each do |plan|%>
+        <h5> <%= plan.name %> </h5>
+        <h5> Price: US$ <%= plan.monthly_fee%>/mo</h5>
+        <div class="container">
+          <p class="d-flex justify-content-center"> Features </p>
+          <div class="container">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Unit price</th>
+                    <th>Max Unit Limit</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <%= render partial: "features", collection: all_features_of_plan(plan)%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+      <% end %>
+      </div>
+  </div>
+ </div>

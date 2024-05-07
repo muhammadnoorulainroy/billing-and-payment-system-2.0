@@ -1,0 +1,57 @@
+<aside>
+    <nav class="sidebar">
+
+        <div class="mt-5 menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+
+                    <li class="navbar-link">
+                        <a href="<%=new_user_invitation_path %>">
+                            <i class='bx bx-user-plus icon' ></i>
+                            <span class="text nav-text">Invite Users</span>
+                        </a>
+                    </li>
+
+                    <li class="navbar-link">
+                        <a href="<%= admin_features_path %>">
+                            <i class='bx bx-customize icon'></i>
+                            <span class="text nav-text">Features</span>
+                        </a>
+                    </li>
+
+                    <li class="navbar-link">
+                        <a href="<%= admin_plans_path %>">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Plans</span>
+                        </a>
+                    </li>
+
+                    <li class="navbar-link">
+                        <a href="<%= admin_subscriptions_path %>">
+                            <i class='bx bx-money icon' ></i>
+                            <span class="text nav-text">Subscriptions</span>
+                        </a>
+                    </li>
+
+                    <li class="navbar-link">
+                        <a href="<%= admin_transactions_path %>">
+                            <i class='bx bx-money-withdraw icon' ></i>
+                            <span class="text nav-text">Transactions</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="navbar-link">
+                    <a href= "<%= destroy_user_session_path%>" >
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+
+        </div>
+    </nav>
+</aside>

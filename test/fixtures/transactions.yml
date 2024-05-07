@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan_name: MyString
+  amount: 9.99
+  buyer_name: MyString
+  buyer_email: MyString
+
+two:
+  plan_name: MyString
+  amount: 9.99
+  buyer_name: MyString
+  buyer_email: MyString

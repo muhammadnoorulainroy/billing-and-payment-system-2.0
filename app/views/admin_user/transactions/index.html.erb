@@ -1,0 +1,39 @@
+<section>
+
+  <div class="container">
+    <div class="card w-100 p-3">
+      <div class="card-body">
+      <h4 class="card-title">All Transactions</h4>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Amount</th>
+                <th>Buyer Name</th>
+                <th>Buyer Email</th>
+                <th>Time</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @transactions.each do |transaction| %>
+                <tr>
+                  <td><%= transaction.plan_name %></td>
+                  <td>US$ <%= transaction.amount %></td>
+                  <td><%= transaction.buyer_name %></td>
+                  <td><%= transaction.buyer_email %></td>
+                  <td><%= transaction.created_at %></td>
+                  <td><%= link_to 'Destroy', admin_transaction_path(transaction.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-end mt-10"> <%== pagy_bootstrap_combo_nav_js(@pagy) %> </div>
+        <br>
+  </div>
+  </div>
+  </div>
+</section>
